@@ -1,14 +1,22 @@
-﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application;
+﻿using LibeyTechnicalTestDomain.EFCore;
+using LibeyTechnicalTestDomain.LibeyUserAggregate.Application;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace LibeyTechnicalTestAPI.Middleware
 {
     public static class DIExtensions
     {
-        public static IServiceCollection AddConfigurations(this IServiceCollection services)
+        public static IServiceCollection AddProjectServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<ILibeyUserAggregate, LibeyUserAggregate>();
-            services.AddTransient<ILibeyUserRepository, LibeyUserRepository>();
+            services.AddDbContext<Context>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<ILibeyUserRepository, LibeyUserRepository>();
+
             return services;
         }
     }

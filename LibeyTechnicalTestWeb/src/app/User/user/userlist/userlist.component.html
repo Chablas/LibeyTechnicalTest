@@ -1,0 +1,38 @@
+<div class="row mt-3" style="margin: 5rem 10rem 0 10rem; padding: 1rem; background-color:#edf2f6;border-radius: 10px;">
+
+<table border="1" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Ap. Paterno</th>
+      <th>Ap. Materno</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ user.documentNumber }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.fathersLastName }}</td>
+      <td>{{ user.mothersLastName }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button
+          style="background-color: blue; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px;"
+          (click)="editUser(user.documentNumber)">
+          Editar
+        </button>
+        <button
+          style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;"
+          (click)="deleteUser(user.documentNumber, i)">
+          Eliminar
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

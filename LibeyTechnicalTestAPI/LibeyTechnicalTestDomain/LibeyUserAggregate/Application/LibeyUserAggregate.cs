@@ -10,14 +10,56 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application
         {
             _repository = repository;
         }
-        public void Create(UserUpdateorCreateCommand command)
+        public void Create(UserCreateCommand command)
         {
-            throw new NotImplementedException();
+            var user = new LibeyUser(
+                command.DocumentNumber,
+                command.DocumentTypeId,
+                command.Name,
+                command.FathersLastName,
+                command.MothersLastName,
+                command.Address,
+                command.UbigeoCode,
+                command.RegionCode,
+                command.ProvinceCode,
+                command.Phone,
+                command.Email,
+                command.Password
+                );
+            _repository.Create(user);
         }
+
+        public IEnumerable<LibeyUserResponse> GetAll()
+        {
+            return _repository.GetAll();
+        }
+
         public LibeyUserResponse FindResponse(string documentNumber)
         {
-            var row = _repository.FindResponse(documentNumber);
-            return row;
+            return _repository.FindResponse(documentNumber);
+        }
+
+        public void Update(string documentNumber, UserUpdateCommand command)
+        {
+            var user = new LibeyUser(
+                command.Name,
+                command.FathersLastName,
+                command.MothersLastName,
+                command.Address,
+                command.UbigeoCode,
+                command.RegionCode,
+                command.ProvinceCode,
+                command.Phone,
+                command.Email,
+                command.Password,
+                command.Active
+            );
+            _repository.Update(documentNumber, user);
+        }
+
+        public void Delete(string documentNumber)
+        {
+            _repository.Delete(documentNumber);
         }
     }
 }

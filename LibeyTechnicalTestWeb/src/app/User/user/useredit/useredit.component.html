@@ -1,16 +1,13 @@
 <form #userForm="ngForm" (ngSubmit)="Submit()" style="padding-right: 5%; padding-left: 5%;">
 	<div class="card" style="width: 100%; margin-top: 2rem; background-color:#edf2f6; border-radius: 10px;">
-		<div class="card-header"><b>Mantenimiento de usuario</b></div>
+		<div class="card-header"><b>Edición de usuario</b></div>
 		<div class="card mb-4 mt-4">
 			<ul class="nav">
 				<button type="submit" class="btn-toolbar">
 					<a class="nav-link text-toolbar">Guardar</a>
 				</button>
-				<button type="reset" class="btn-toolbar">
-					<a class="nav-link text-toolbar">Limpiar</a>
-				</button>
 				<button type="button" class="btn-toolbar" routerLink="/user/list">
-					<a href="/user/card" class="nav-link text-toolbar">Volver</a>
+					<a class="nav-link text-toolbar">Volver</a>
 				</button>
 			</ul>
 		</div>
@@ -19,14 +16,11 @@
 			<div class="row pb-2">
 				<div class="col-lg-2">Tipo de documento</div>
 				<div class="col-lg-4">
-					<select [(ngModel)]="user.documentType" name="documentType" class="form-control" required>
-						<option value="DNI">DNI</option>
-						<option value="CE">CE</option>
-					</select>
+					<input [(ngModel)]="user.documentTypeId" name="documentTypeId" type="text" class="form-control form-control-sm" disabled />
 				</div>
 				<div class="col-lg-2">Número de documento</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.documentNumber" name="documentNumber" type="text" class="form-control form-control-sm" required />
+					<input [(ngModel)]="user.documentNumber" name="documentNumber" type="text" class="form-control form-control-sm" disabled />
 				</div>
 			</div>
 
@@ -55,20 +49,20 @@
 			<div class="row pb-2">
 				<div class="col-lg-2">Departamento</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.department" name="department" type="text" class="form-control form-control-sm" />
+					<input [(ngModel)]="user.regionCode" name="regionCode" type="text" class="form-control form-control-sm" />
 				</div>
 				<div class="col-lg-2">Provincia</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.province" name="province" type="text" class="form-control form-control-sm" />
+					<input [(ngModel)]="user.provinceCode" name="provinceCode" type="text" class="form-control form-control-sm" />
 				</div>
 			</div>
 
 			<div class="row pb-2">
 				<div class="col-lg-2">Distrito</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.district" name="district" type="text" class="form-control form-control-sm" />
+					<input [(ngModel)]="user.ubigeoCode" name="ubigeoCode" type="text" class="form-control form-control-sm" />
 				</div>
-				<div class="col-lg-2">Telefono</div>
+				<div class="col-lg-2">Teléfono</div>
 				<div class="col-lg-4">
 					<input [(ngModel)]="user.phone" name="phone" type="text" class="form-control form-control-sm" />
 				</div>
@@ -82,6 +76,13 @@
 				<div class="col-lg-2">Contraseña</div>
 				<div class="col-lg-4">
 					<input [(ngModel)]="user.password" name="password" type="password" class="form-control form-control-sm" />
+				</div>
+			</div>
+
+			<div class="row pb-2">
+				<div class="col-lg-2">Activo</div>
+				<div class="col-lg-4">
+					<input type="checkbox" [(ngModel)]="user.active" name="active" />
 				</div>
 			</div>
 		</div>
