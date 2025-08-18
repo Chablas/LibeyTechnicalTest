@@ -18,8 +18,12 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddScoped<ILibeyUserAggregate, LibeyUserAggregate>();
 builder.Services.AddScoped<ILibeyUserRepository, LibeyUserRepository>();
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddScoped<IRegionAggregate, RegionAggregate>();
+
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LibeyTechnicalTest")));
 Console.WriteLine(builder.Configuration.GetConnectionString("LibeyTechnicalTest"));

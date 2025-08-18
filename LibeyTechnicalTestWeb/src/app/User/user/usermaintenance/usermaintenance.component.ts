@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
 import { LibeyUserService } from "src/app/core/service/libeyuser/libeyuser.service";
+import { RegionService } from "src/app/core/service/region/region.service";
+import { Region } from "src/app/entities/region";
 
 @Component({
   selector: 'app-usermaintenance',
@@ -25,9 +27,17 @@ export class UsermaintenanceComponent implements OnInit {
     password: ''
   };
 
-  constructor(private libeyUserService: LibeyUserService) { }
+  regions: Region[] = [];
 
-  ngOnInit(): void { }
+  constructor(private libeyUserService: LibeyUserService, private regionService: RegionService) { }
+
+  async ngOnInit(): Promise<void> {
+    try {
+      this.regions = await this.regionService.GetAll();
+    } catch (error) {
+      console.error("Error al cargar regiones:", error);
+    }
+  }
 
   async Submit() {
     try {

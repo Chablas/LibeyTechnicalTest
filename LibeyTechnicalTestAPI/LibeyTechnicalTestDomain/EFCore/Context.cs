@@ -8,10 +8,12 @@ namespace LibeyTechnicalTestDomain.EFCore
         public Context(DbContextOptions<Context> options) : base(options) { }
 
         public DbSet<LibeyUser> LibeyUsers { get; set; }
+        public DbSet<Region> Regions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new LibeyUserConfiguration());
+            modelBuilder.ApplyConfiguration(new RegionConfiguration());
         }
     }
 }

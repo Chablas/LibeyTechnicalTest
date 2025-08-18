@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../../environments/environment";
 import { LibeyUser } from "src/app/entities/libeyuser";
+import { LibeyUserForm } from 'src/app/entities/libeyuser';
+import { LibeyUserAPIEdit } from 'src/app/entities/libeyuser';
 @Injectable({
 	providedIn: "root",
 })
@@ -16,7 +18,6 @@ export class LibeyUserService {
 
 	async GetAll(): Promise<LibeyUser[]> {
 		const uri = `${environment.pathLibeyTechnicalTest}LibeyUser`;
-		console.log(uri);
 		const respuesta = await fetch(uri, {
 			method: "GET",
 			headers: {
@@ -44,9 +45,9 @@ export class LibeyUserService {
 			fathersLastName: user.fathersLastName,
 			mothersLastName: user.mothersLastName,
 			address: user.address,
-			ubigeoCode: user.department,
+			ubigeoCode: user.district,
 			provinceCode: user.province,
-			regionCode: user.district,
+			regionCode: user.department,
 			phone: user.phone,
 			email: user.email,
 			password: user.password
@@ -85,5 +86,12 @@ export class LibeyUserService {
 		if (!respuesta.ok) {
 			throw new Error("Error al actualizar");
 		}
+	}
+
+	mapUserToAPIEdit(formUser: LibeyUserForm): LibeyUserAPIEdit {
+		return {
+			...formUser,
+			regionCode: formUser.region.regionCode,
+		};
 	}
 }

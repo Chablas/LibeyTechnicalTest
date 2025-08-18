@@ -49,11 +49,15 @@
 			<div class="row pb-2">
 				<div class="col-lg-2">Departamento</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.regionCode" name="regionCode" type="text" class="form-control form-control-sm" />
+					<select class="form-control form-control-sm" [(ngModel)]="user.region.regionCode" name="regionCode">
+						<option *ngFor="let region of regions" [ngValue]="region.regionCode">
+							{{ region.regionDescription }}
+						</option>
+					</select>
 				</div>
 				<div class="col-lg-2">Provincia</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.provinceCode" name="provinceCode" type="text" class="form-control form-control-sm" />
+					<input [(ngModel)]="user.provinceCode" name="province" type="text" class="form-control form-control-sm" />
 				</div>
 			</div>
 

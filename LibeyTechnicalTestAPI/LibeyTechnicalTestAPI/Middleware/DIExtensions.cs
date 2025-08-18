@@ -16,6 +16,7 @@ namespace LibeyTechnicalTestAPI.Middleware
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ILibeyUserRepository, LibeyUserRepository>();
+            services.AddScoped<IRegionRepository, RegionRepository>();
 
             return services;
         }

@@ -21,7 +21,6 @@
 				<div class="col-lg-4">
 					<select [(ngModel)]="user.documentType" name="documentType" class="form-control" required>
 						<option value="DNI">DNI</option>
-						<option value="CE">CE</option>
 					</select>
 				</div>
 				<div class="col-lg-2">Número de documento</div>
@@ -55,7 +54,11 @@
 			<div class="row pb-2">
 				<div class="col-lg-2">Departamento</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.department" name="department" type="text" class="form-control form-control-sm" />
+					<select [(ngModel)]="user.department" name="department" class="form-control form-control-sm">
+						<option *ngFor="let region of regions" [value]="region.regionCode">
+							{{ region.regionDescription }}
+						</option>
+					</select>
 				</div>
 				<div class="col-lg-2">Provincia</div>
 				<div class="col-lg-4">
