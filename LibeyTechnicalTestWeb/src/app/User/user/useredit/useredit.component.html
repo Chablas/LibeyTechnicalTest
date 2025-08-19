@@ -57,14 +57,22 @@
 				</div>
 				<div class="col-lg-2">Provincia</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.provinceCode" name="province" type="text" class="form-control form-control-sm" />
+					<select class="form-control form-control-sm" [(ngModel)]="user.province.provinceCode" name="provinceCode">
+						<option *ngFor="let province of provinces" [ngValue]="province.provinceCode">
+							{{ province.provinceDescription }}
+						</option>
+					</select>
 				</div>
 			</div>
 
 			<div class="row pb-2">
 				<div class="col-lg-2">Distrito</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.ubigeoCode" name="ubigeoCode" type="text" class="form-control form-control-sm" />
+					<select class="form-control form-control-sm" [(ngModel)]="user.ubigeo.ubigeoCode" name="ubigeoCode">
+						<option *ngFor="let ubigeo of ubigeos" [ngValue]="ubigeo.ubigeoCode">
+							{{ ubigeo.ubigeoDescription }}
+						</option>
+					</select>
 				</div>
 				<div class="col-lg-2">Teléfono</div>
 				<div class="col-lg-4">

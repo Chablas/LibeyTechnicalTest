@@ -17,6 +17,9 @@ namespace LibeyTechnicalTestAPI.Middleware
 
             services.AddScoped<ILibeyUserRepository, LibeyUserRepository>();
             services.AddScoped<IRegionRepository, RegionRepository>();
+            services.AddScoped<IProvinceRepository, ProvinceRepository>();
+            services.AddScoped<IUbigeoRepository, UbigeoRepository>();
+            services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
 
             return services;
         }

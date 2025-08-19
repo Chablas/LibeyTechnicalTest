@@ -20,7 +20,9 @@
 				<div class="col-lg-2">Tipo de documento</div>
 				<div class="col-lg-4">
 					<select [(ngModel)]="user.documentType" name="documentType" class="form-control" required>
-						<option value="DNI">DNI</option>
+						<option *ngFor="let documentType of documentTypes" [value]="documentType.documentTypeId">
+							{{ documentType.documentTypeDescription }}
+						</option>
 					</select>
 				</div>
 				<div class="col-lg-2">Número de documento</div>
@@ -62,14 +64,22 @@
 				</div>
 				<div class="col-lg-2">Provincia</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.province" name="province" type="text" class="form-control form-control-sm" />
+					<select [(ngModel)]="user.province" name="province" class="form-control form-control-sm">
+						<option *ngFor="let province of provinces" [value]="province.provinceCode">
+							{{ province.provinceDescription }}
+						</option>
+					</select>
 				</div>
 			</div>
 
 			<div class="row pb-2">
 				<div class="col-lg-2">Distrito</div>
 				<div class="col-lg-4">
-					<input [(ngModel)]="user.district" name="district" type="text" class="form-control form-control-sm" />
+					<select [(ngModel)]="user.district" name="ubigeo" class="form-control form-control-sm">
+						<option *ngFor="let ubigeo of ubigeos" [value]="ubigeo.ubigeoCode">
+							{{ ubigeo.ubigeoDescription }}
+						</option>
+					</select>
 				</div>
 				<div class="col-lg-2">Telefono</div>
 				<div class="col-lg-4">

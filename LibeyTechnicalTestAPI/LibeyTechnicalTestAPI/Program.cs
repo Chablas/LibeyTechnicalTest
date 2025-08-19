@@ -23,6 +23,12 @@ builder.Services.AddScoped<ILibeyUserAggregate, LibeyUserAggregate>();
 builder.Services.AddScoped<ILibeyUserRepository, LibeyUserRepository>();
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 builder.Services.AddScoped<IRegionAggregate, RegionAggregate>();
+builder.Services.AddScoped<IProvinceRepository, ProvinceRepository>();
+builder.Services.AddScoped<IProvinceAggregate, ProvinceAggregate>();
+builder.Services.AddScoped<IUbigeoRepository, UbigeoRepository>();
+builder.Services.AddScoped<IUbigeoAggregate, UbigeoAggregate>();
+builder.Services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
+builder.Services.AddScoped<IDocumentTypeAggregate, DocumentTypeAggregate>();
 
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LibeyTechnicalTest")));

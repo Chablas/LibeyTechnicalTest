@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces
 {
-    public interface IRegionRepository
+    public interface IProvinceRepository
     {
-        IEnumerable<RegionResponse> GetAll();
-        RegionResponse Find(string regionCode);
+        IEnumerable<ProvinceResponse> GetAll();
+        ProvinceResponse Find(string provinceCode);
     }
 }

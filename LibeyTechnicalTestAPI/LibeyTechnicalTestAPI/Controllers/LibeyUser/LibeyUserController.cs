@@ -35,6 +35,10 @@ namespace LibeyTechnicalTestAPI.Controllers.LibeyUser
         [HttpPost]
         public IActionResult Create([FromBody] UserCreateCommand command)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             _aggregate.Create(command);
             return CreatedAtAction(nameof(Get), new { documentNumber = command.DocumentNumber }, command);
         }

@@ -92,6 +92,8 @@ export class LibeyUserService {
 		return {
 			...formUser,
 			regionCode: formUser.region.regionCode,
+			provinceCode: formUser.province.provinceCode,
+			ubigeoCode: formUser.ubigeo.ubigeoCode
 		};
 	}
 }

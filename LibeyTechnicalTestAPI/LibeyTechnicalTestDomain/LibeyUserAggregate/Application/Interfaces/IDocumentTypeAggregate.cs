@@ -1,12 +1,11 @@
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.DTO;
-using LibeyTechnicalTestDomain.LibeyUserAggregate.Domain;
 using System.Collections.Generic;
 
 namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces
 {
-    public interface IRegionRepository
+    public interface IDocumentTypeAggregate
     {
-        IEnumerable<RegionResponse> GetAll();
-        RegionResponse Find(string regionCode);
+        IEnumerable<DocumentTypeResponse> GetAll();
+        DocumentTypeResponse Find(int documentTypeId);
     }
 }
